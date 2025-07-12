@@ -1,0 +1,7 @@
+=== Risultati parsing DOM ===
+DOM Query modality A:
+[]
+DOM Query modality B:
+[image1]
+DOM Query modality C:
+[image2]

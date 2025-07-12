@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ricerca
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:noNamespaceSchemaLocation="Hotel.xsd">
+     <e-mail>alessandrosalomoni56@gmail.com</e-mail>
+     <password>pas$w0rd</password>
+     <nazione>Italia</nazione>
+     <citta>Imola</citta>
+     <numeroStelle>3</numeroStelle>
+     <fasciaPrezzo>bassa</fasciaPrezzo>
+     <risultato>
+          <oggetto>
+               <nome_hotel>Hotel la bella vita</nome_hotel>
+               <fotografia_hotel>image1.jpg</fotografia_hotel>
+               <giudizio_utenti>buono</giudizio_utenti>
+               <prezzo>45</prezzo>
+               <link cliccato="true">https://www.booking.com/</link>
+          </oggetto>
+          <oggetto>
+               <nome_hotel>Hotel la brutta vita</nome_hotel>
+               <fotografia_hotel>image2.jpg</fotografia_hotel>
+               <giudizio_utenti>eccellente</giudizio_utenti>
+               <prezzo>40</prezzo>
+               <link cliccato="false">https://www.booking.com/home/</link>
+          </oggetto>
+     </risultato>
+</ricerca>

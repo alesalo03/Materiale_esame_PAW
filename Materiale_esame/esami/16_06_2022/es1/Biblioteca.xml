@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<biblioteca
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:noNamespaceSchemaLocation="Biblioteca.xsd">
+     <musicista>
+          <nome>Alessandro</nome>
+          <cognome>Berto</cognome>
+          <nome_arte>AleSalo</nome_arte>
+          <genere_musicale>Pop</genere_musicale>
+          <album>
+               <titolo_album>Finally rich</titolo_album>
+               <anno_pubblicazione>2012</anno_pubblicazione>
+               <brano>
+                    <titolo_brano>Love Sosa</titolo_brano>
+                    <lunghezza_brano>03:12</lunghezza_brano>
+               </brano>
+               <brano>
+                    <titolo_brano>Hate Bein Sober</titolo_brano>
+                    <lunghezza_brano>03:47</lunghezza_brano>
+               </brano>
+          </album>
+          <album>
+               <titolo_album>Finally rich remastered</titolo_album>
+               <anno_pubblicazione>2022</anno_pubblicazione>
+               <brano>
+                    <titolo_brano>Love Sosa</titolo_brano>
+                    <lunghezza_brano>03:12</lunghezza_brano>
+               </brano>
+               <brano>
+                    <titolo_brano>Hate Bein Sober</titolo_brano>
+                    <lunghezza_brano>03:47</lunghezza_brano>
+               </brano>
+               <brano>
+                    <titolo_brano>I don't like</titolo_brano>
+                    <lunghezza_brano>04:47</lunghezza_brano>
+               </brano>
+          </album>
+     </musicista>
+     <musicista>
+          <nome>Alberto</nome>
+          <cognome>Bertozzi</cognome>
+          <nome_arte>AlbySalo</nome_arte>
+          <genere_musicale>Pop</genere_musicale>
+          <album>
+               <titolo_album>Finally richissimo</titolo_album>
+               <anno_pubblicazione>2012</anno_pubblicazione>
+               <brano>
+                    <titolo_brano>Love Sosa</titolo_brano>
+                    <lunghezza_brano>03:12</lunghezza_brano>
+               </brano>
+               <brano>
+                    <titolo_brano>Hate Bein Sober</titolo_brano>
+                    <lunghezza_brano>03:47</lunghezza_brano>
+               </brano>
+          </album>
+     </musicista>
+
+</biblioteca>

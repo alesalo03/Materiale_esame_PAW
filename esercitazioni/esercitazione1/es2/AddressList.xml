@@ -1,0 +1,21 @@
+<?xml version=“1.0” encoding=“UTF-8”?>
+<!DOCTYPE addressList SYSTEM "AddressListSchema.xsd">
+
+<addressList>
+    <informazione>
+        <name>
+            <nomeProprio>Alessandro</nomeProprio>
+            <cognome>cognome</cognome>
+        </name>
+        <indirizzo>
+            <via> Via Casola Canina</via>
+            <indirizzoPostale>14</indirizzoPostale>
+            <provincia>Bologna</provincia>
+            <stato>Italia</stato>
+        </indirizzo>
+        <telefono>3318838395</telefono>
+        <mail>alessandrosalomoni56@gmail.com</mail>
+        <mail>myzanichellisimpatic@libero.it</mail>
+        <note>Non inviare spam</note>
+    </informazione>
+</addressList>

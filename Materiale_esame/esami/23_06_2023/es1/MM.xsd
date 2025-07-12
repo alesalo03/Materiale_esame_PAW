@@ -1,0 +1,44 @@
+<?xml version="1.0" ?> 
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xs:simpleType name="IDType">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[A-Za-z0-9]+"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+
+	<xs:complexType name="queryType"> 
+		<xs:sequence> 
+			<xs:element name = "inputImageID" type="IDType"/>
+			<xs:element name="mod">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:length value="1"/>
+						<xs:pattern value="[A-C]"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		 	<xs:element name = "cardinality" type="xs:integer"/>
+			<xs:element name ="results">
+		 		<xs:complexType>
+					<xs:sequence>
+						<xs:element name="outputImageID" type="IDType" maxOccurs="unbounded"/>
+					</xs:sequence>
+		 		</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+
+	<xs:element name="queries">
+  		<xs:complexType>
+    		<xs:sequence>
+      			<xs:element name="query" type="queryType" maxOccurs="unbounded"/>
+    		</xs:sequence>
+  		</xs:complexType>
+	</xs:element>
+	
+    
+</xs:schema>

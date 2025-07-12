@@ -1,0 +1,16 @@
+<?xml version=“1.0” encoding=“UTF-8”?>
+<!DOCTYPE lettera SYSTEM "SchemaLettera.xsd">
+
+<lettera>
+    <mittente>Alessandro Salomoni</mittente>
+    <data>2025-02-27</data>
+    <destinatario>Anzelo Jin</destinatario>
+    <oggetto>Ti prego segui i corsi coglione</oggetto>
+    <salutoCortese>Buongiornissimo</salutoCortese>
+    <corpo>
+        <paragrafo>La prego di venire a lezione signor Jin</paragrafo>
+        <paragrafo>Potrebbe anche divertirsi portando con sè il signor Spada</paragrafo>
+    </corpo>
+    <chiusura>Arrivederci e a presto</chiusura>
+    <firma>Alessandro Salomoni</firma>
+</lettera>

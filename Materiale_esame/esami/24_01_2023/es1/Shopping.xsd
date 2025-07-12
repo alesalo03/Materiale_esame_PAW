@@ -1,0 +1,62 @@
+<?xml version="1.0" ?> 
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xs:simpleType name="password">
+		<xs:restriction base="xs:string">
+			<xs:length value="8"/>
+			<xs:pattern value=".*[0-9].*"/>
+			<xs:pattern value=".*[?!*$].*"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="email">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[^@]+\@[^@]+\.[^@]+"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name="oggettoType">
+		<xs:sequence>
+			<xs:element name="fotografia" type="xs:string"/>
+			<xs:element name="descrizione" type="xs:string"/>
+			<xs:element name="prezzo" type="xs:integer"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:simpleType name="sceltaLabelType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="abiti"/>
+			<xs:enumeration value="camice"/>
+			<xs:enumeration value="giacche"/>
+			<xs:enumeration value="gonne"/>
+			<xs:enumeration value="pantaloni"/>
+			<xs:enumeration value="ultimi arrivi"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name="sceltaType">
+		<xs:sequence>
+			<xs:element name="sceltaLabel" type="sceltaLabelType"/>
+			<xs:element name="oggetto" type="oggettoType" maxOccurs="unbounded"/>
+		</xssequence>
+	</xs:complexType>
+	
+	<xs:complexType name="visitaType"> 
+		<xs:sequence> 
+			<xs:element name = "e-mail" type="email"/>
+			<xs:element name = "password" type="password"/>
+			<xs:element name="scelte">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="scelta" type="sceltaType" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+    <xs:element name="visita" type="visitaType"/>
+	
+    
+</xs:schema>

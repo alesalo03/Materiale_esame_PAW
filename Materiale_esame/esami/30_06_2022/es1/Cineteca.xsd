@@ -1,0 +1,99 @@
+<?xml version="1.0" ?> 
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xs:simpleType name="nazioneType">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[A-Z]{2}"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="linguaType">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[A-Z]{3}"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="collocazioneType">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[0-9]{2}\.[0-9]{2}\.[0-9]{2}\.[0-9]{3}\.[A-Z]{3}"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="tipoColoreType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Colore"/>
+			<xs:enumeration value="BN"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="formatoType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Blu-ray"/>
+			<xs:enumeration value="DVD"/>
+			<xs:enumeration value="Divx"/>
+			<xs:enumeration value="VHS"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="pellicolaDimType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="35mm"/>
+			<xs:enumeration value="16mm"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name="regiaType">
+		<xs:sequence>
+			<xs:element name="nomeRegista" type="xs:string"/>
+			<xs:element name="cognomeRegista" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="audioVisivoType"> 
+		<xs:sequence> 
+			<xs:element name = "regista" type="regiaType"/>
+			<xs:element name = "titolo" type="xs:string"/>
+			<xs:element name="nazione" type="nazioneType"/>
+			<xs:element name="lingua" type="linguaType"/>
+			<xs:element name="tipoColore" type="tipoColoreType"/>
+			<xs:element name="durata" type="xs:integer"/>
+			<xs:element name = "tipologia" type="xs:string"/>
+			<xs:element name="formato" type="formatoType"/>
+			<xs:element name="annoProduzione" type="xs:integer"/>
+			<xs:element name="disponibile" type="xs:boolean"/>
+			<xs:element name="collocazione" type="collocazioneType"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="pellicolaType"> 
+		<xs:sequence> 
+			<xs:element name = "regia" type="regiaType"/>
+			<xs:element name = "titolo" type="xs:string"/>
+			<xs:element name = "pellicolaDim" type="pellicolaDimType"/>
+			<xs:element name="prestito" type="xs:boolean"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="archivioAudiovisivoType"> 
+		<xs:sequence>
+			<xs:element name="audioVisivo" type="audioVisivoType" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="archivioPellicolaType"> 
+		<xs:sequence>
+			<xs:element name="pellicola" type="pellicolaType" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="cinetecaType"> 
+		<xs:sequence>
+			<xs:element name="archivioAudioVisivo" type="archivioAudiovisivoType"/>
+			<xs:element name="archivioPellicola" type="archivioPellicolaType"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="cineteca" type="cinetecaType"/>
+	
+</xs:schema>

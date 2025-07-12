@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<visita
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:noNamespaceSchemaLocation="Shopping.xsd">
+     <e-mail>alessandrosalomoni56@gmail.com</e-mail>
+     <password>pas$w0rd</password>
+     <scelte>
+          <scelta>
+               <sceltaLabel>abiti</sceltaLabel>
+               <oggetto>
+                    <fotografia>image1.jpg</fotografia>
+                    <descrizione>descrizione testuale prodotto1</descrizione>
+                    <prezzo>12</prezzo>
+               </oggetto>
+               <oggetto>
+                    <fotografia>image2.jpg</fotografia>
+                    <descrizione>descrizione testuale p1rodotto2</descrizione>
+                    <prezzo>122</prezzo>
+               </oggetto>
+          </scelta>
+     </scelte>
+</visita>

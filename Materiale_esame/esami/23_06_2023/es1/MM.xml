@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<queries
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:noNamespaceSchemaLocation="MM.xsd">
+    
+    <query>
+          <inputImageID>image1</inputImageID>
+          <mod>B</mod>
+          <cardinality>2</cardinality>
+          <results>
+               <outputImageID>image2</outputImageID>
+               <outputImageID>image3</outputImageID>
+          </results>
+    </query>
+     <query>
+          <inputImageID>image2</inputImageID>
+          <mod>C</mod>
+          <cardinality>3</cardinality>
+          <results>
+               <outputImageID>image4</outputImageID>
+               <outputImageID>image3</outputImageID>
+               <outputImageID>image5</outputImageID>
+          </results>
+    </query>
+
+</queries>

@@ -1,0 +1,5 @@
+=== Risultati parsing SAX ===
+SCELTE dell'UTENTE:[s: abiti
+[O: image1.jpg	descrizione testuale prodotto1	12
+, O: image2.jpg	descrizione testuale p1rodotto2	122
+]]

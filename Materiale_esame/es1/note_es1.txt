@@ -1,0 +1,131 @@
+APPUNTI ES1:
+
+- Se un ELEMENTO deve essere OPZIONALE significa che deve avere minOccurs 0
+- Se le occorrenze non sono specificate (quindi non c'è minOccurs o maxOccurs) 
+il default è che l’elemento deve comparire esattamente una volta (quindi minOccurs = 1 e maxOccurs = 1)
+---------------------------------------------------------------------------------------------------------------------
+- i TIPI COMPLESSI possono essere sia inline che nominati:
+es tipo complesso NOMINATO
+
+<xs:element name="Address_list" type="addressListType" /> 
+	
+<xs:complexType name="addressListType"> 
+        <xs:sequence> 
+            <xs:element name="Information" type="InformationType" minOccurs="1" maxOccurs="unbounded" />
+        </xs:sequence> 
+</xs:complexType>
+
+es tipo complesso INLINE
+
+<xs:element name = "Full_name" > 
+	<xs:complexType>
+		<xs:sequence> 
+			<xs:element name = "First_name" type="xs:string" /> 
+			<xs:element name = "Middle_name" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
+			<xs:element name = "Last_name" type="xs:string" /> 
+		</xs:sequence> 
+	</xs:complexType>
+</xs:element>
+
+NOTA: se il tipo complesso si trova all'interno di una sequence non può avere nome
+-----------------------------------------------------------------------------------------------------------------------
+- è possibile avere ATTRIBUTI CON VALORI FISSI es: <xs:attribute name="version" type="xs:string" fixed="0.92" />
+- Gli elementi si usano per dati strutturali o che possono avere sotto-elementi. Gli attributi si usano per proprietà semplici, 
+identificatori, o metadati che non hanno bisogno di sotto-elementi.
+-------------------------------------------------------------------------------------------------------------------------
+- Namespace --> A cosa serve? Evita confusione tra elementi con lo stesso nome ma significato diverso, soprattutto quando unisci XML da fonti diverse.
+
+Esempio senza namespace (rischio confusione): l'elemento titolo può riferirsi sia a un libro che a un film.
+<libro>
+  <titolo>XML Facile</titolo>
+</libro>
+<film>
+  <titolo>Matrix</titolo>
+</film>
+
+Esempio con namespace: è chiaro a quale “mondo” (lib o film) appartiene ogni elemento.
+<lib:libro xmlns:lib="http://mioesempio.it/libri">
+  <lib:titolo>XML Facile</lib:titolo>
+</lib:libro>
+<film:film xmlns:film="http://mioesempio.it/film">
+  <film:titolo>Matrix</film:titolo>
+</film:film>
+-------------------------------------------------------------------------------------------------------------------------
+- Quando vuoi un elemento che contiene solo testo (niente figli), ma vuoi anche aggiungere attributi--> <xs:simpleContent>
+- Per estendere un tipo di dato di base (es: xs:string, xs:decimal) aggiungendo attributi --> extension
+              			<xs:extension base="xs:string">
+					<xs:attribute name="url" type="xs:string" use="required" />
+				</xs:extension>
+-------------------------------------------------------------------------------------------------------------------------------
+Stringa composta da SOLO CARATTERI ALFANUMERICI:
+	<xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[A-Za-z0-9]+"/>
+		</xs:restriction>
+	</xs:simpleType>
+-------------------------------------------------------------------------------------------------------------------------------
+PATTERN
+
+| Carattere | Significato                                   |                         |
+| --------- | --------------------------------------------- | ----------------------- |
+| `.`       | Qualsiasi singolo carattere                   |                         |
+| `^`       | Inizio della stringa                          |                         |
+| `$`       | Fine della stringa                            |                         |
+| `*`       | Zero o più occorrenze                         |                         |
+| `+`       | Una o più occorrenze                          |                         |
+| `?`       | Zero o una occorrenza                         |                         |
+| `{n}`     | Esattamente n occorrenze                      |                         |
+| `{n,}`    | Almeno n occorrenze                           |                         |
+| `{n,m}`   | Da n a m occorrenze                           |                         |
+| `[...]`   | Qualsiasi carattere dell’intervallo o insieme |                         |
+| `[^...]`  | Qualsiasi carattere **escluso** l’insieme     |                         |
+| \`        | \`                                            | Alternativa logica (OR) |
+| `\`       | Escape per caratteri speciali                 |                         |
+
+Caratteri comuni:
+
+| Notazione        | Descrizione                          |
+| ---------------- | ------------------------------------ |
+| `[a-z]`          | Lettere minuscole                    |
+| `[A-Z]`          | Lettere maiuscole                    |
+| `[0-9]`          | Cifre da 0 a 9                       |
+| `[a-zA-Z]`       | Lettere alfabetiche                  |
+| `[a-zA-Z0-9]`    | Alfanumerico                         |
+| `\s`             | Spazio (non sempre supportato)       |
+| `\n`, `\r`       | A capo / ritorno carrello (limitato) |
+| `\\`             | Carattere backslash (`\`)            |
+| `\.`             | Punto letterale (non "qualsiasi")    |
+| `\@`             | Chiocciola `@`                       |
+| `\$`             | Simbolo `$`                          |
+| `\?`, `\!`, `\*` | Altri simboli da "escapare"          |
+
+NOTA: anche nel caso di caratteri speciali (@, $, ...) non devo mettere l'escape \ se sono all'interno di []
+
+NOTA: non puoi dichiarare un simpleType dentro un complexType se non è inline
+
+NOTA:
+Nel caso di pattern complessi posso comporli con più pattern facet. In questo modo i pattern sono in AND logico:
+
+		<xs:restriction base="xs:string">
+			<xs:pattern value=".*[0-9].*"/> <!--deve contenere almeno un numero-->
+			<xs:pattern value=".*[?!*\$].*"/> <!--deve contenere almeno un carattere speciale-->
+			<xs:pattern value="([A-Za-z0-9?!*\$]{8}"/> <!--può contenere solo caratteri alfanumerici e i caratteri speciali indicati per una lunghezza totale di 8-->
+		</xs:restriction>
+
+PASSWORD:
+
+	<xs:simpleType name="password">
+		<xs:restriction base="xs:string">
+			<xs:length value="8"/>
+			<xs:pattern value=".*[0-9].*"/>
+			<xs:pattern value=".*[?!*$].*"/>
+		</xs:restriction>
+	</xs:simpleType>
+EMAIL:
+	<xs:simpleType name="email">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[^@]+\@[^@]+\.[^@]+"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+

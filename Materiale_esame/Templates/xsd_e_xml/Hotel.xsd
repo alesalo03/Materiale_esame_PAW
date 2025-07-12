@@ -1,0 +1,85 @@
+<?xml version="1.0" ?> 
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xs:simpleType name="password">
+		<xs:restriction base="xs:string">
+			<xs:length value="8"/>
+			<xs:pattern value=".*[0-9].*"/>
+			<xs:pattern value=".*[?!*$].*"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="email">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[^@]+\@[^@]+\.[^@]+"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="giudizioType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="eccellente"/>
+			<xs:enumeration value="buono"/>
+			<xs:enumeration value="medio"/>
+			<xs:enumeration value="sufficiente"/>
+			<xs:enumeration value="mediocre"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+
+	<xs:complexType name="oggettoType">
+		<xs:sequence>
+			<xs:element name="nome_hotel" type="xs:string"/>
+			<xs:element name="fotografia_hotel" type="xs:string"/>
+			<xs:element name="giudizio_utenti" type="giudizioType"/>
+			<xs:element name="prezzo" type="xs:integer"/>
+			<xs:element name="link">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:anyURI">
+							<xs:attribute name="cliccato" type="xs:boolean" use="required"/>
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:simpleType name="fasciaPrezzoType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="bassa"/>
+			<xs:enumeration value="media"/>
+			<xs:enumeration value="alta"/>
+			<xs:enumeration value="lusso superiore"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="numeroStelleType">
+		<xs:restriction base="xs:integer">
+			<xs:minInclusive value="1"/>
+			<xs:maxInclusive value="5"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:complexType name="ricercaType"> 
+		<xs:sequence> 
+			<xs:element name = "e-mail" type="email"/>
+			<xs:element name = "password" type="password"/>
+			<xs:element name="nazione" type="xs:string"/>
+			<xs:element name="citta" type="xs:string"/>
+			<xs:element name="numeroStelle" type="numeroStelleType"/>
+			<xs:element name="fasciaPrezzo" type="fasciaPrezzoType" minOccurs="0"/>
+			<xs:element name="risultato">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="oggetto" type="oggettoType" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+    <xs:element name="ricerca" type="ricercaType"/>
+	
+    
+</xs:schema>

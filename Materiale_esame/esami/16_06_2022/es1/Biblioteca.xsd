@@ -1,0 +1,45 @@
+<?xml version="1.0" ?> 
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xs:simpleType name="lunghezza_branoType">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[0-9]{2}\:[0-5][0-9]"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name="branoType"> 
+		<xs:sequence> 
+			<xs:element name = "titolo_brano" type="xs:string"/>
+			<xs:element name="lunghezza_brano" type="lunghezza_branoType"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="albumType"> 
+		<xs:sequence> 
+			<xs:element name = "titolo_album" type="xs:string"/>
+			<xs:element name = "anno_pubblicazione" type="xs:integer"/>
+			<xs:element name="brano" type="branoType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="musicistaType"> 
+		<xs:sequence> 
+			<xs:element name = "nome" type="xs:string"/>
+			<xs:element name = "cognome" type="xs:string"/>
+			<xs:element name = "nome_arte" type="xs:string" minOccurs="0"/>
+			<xs:element name = "genere_musicale" type="xs:string"/>
+			<xs:element name="album" type="albumType" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="bibliotecaType"> 
+		<xs:sequence> 
+			<xs:element name = "musicista" type="musicistaType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+    <xs:element name="biblioteca" type="bibliotecaType"/>
+	
+    
+</xs:schema>

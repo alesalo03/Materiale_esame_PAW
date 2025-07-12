@@ -1,0 +1,120 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+<!-- mi definisco un tipo enclosure -->
+<xs:complexType name="enclosureType">
+    <xs:attribute name="url" type="xs:string" use="required"/>
+    <xs:attribute name="length" type="xs:string" use="required"/>
+    <xs:attribute name="type" type="xs:string" use="required"/>
+    <xs:sequence>
+        <xs:element name="enclosureName" type="xs:string">
+    </xs:sequence>
+</xs:complexType>
+
+<!-- mi definisco un tipo source -->
+<xs:complexType name="sourceType">
+    <xs:attribute name="url" type="xs:string" use="required"/>
+    <xs:sequence>
+        <xs:element name="sourceName" type="xs:string">
+    </xs:sequence>
+</xs:complexType>
+
+<!-- mi definisco un tipo category -->
+<xs:complexType name="categoryType">
+    <xs:attribute name="domain" type="xs:string" use="optional"/>
+    <xs:sequence>
+        <xs:element name="categoryName" type="xs:string">
+    </xs:sequence>
+</xs:complexType>
+
+<!-- mi definisco un tipo immagine -->
+<xs:complexType name="immagineType">
+    <xs:sequence>
+        <xs:element name="title" type="xs:string"/>
+        <xs:element name="url" type="xs:string"/>
+        <xs:element name="link" type="xs:string"/>
+        <xs:element name="width" type="xs:decimal" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="heigth" type="xs:decimal" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+</xs:complexType>
+
+<!-- mi definisco un tipo item -->
+<xs:complexType name="itemType">
+    <xs:sequence>
+        <xs:element name="title" type="xs:string" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="link" type="xs:string" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="source" type="xs:string" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="enclosure" type="xs:string" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="category" type="xs:string" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+</xs:complexType>
+
+<!-- mi definisco un tipo textInput -->
+<xs:complexType name="textInputType">
+    <xs:sequence>
+        <xs:element name="title" type="xs:string" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="name" type="xs:string" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="link" type="xs:string" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+</xs:complexType>
+
+<!-- mi definisco un tipo cloud -->
+<xs:complexType name="cloudType">
+    <xs:attribute name="domain" type="xs:string" use="required"/>
+    <xs:attribute name="port" type="xs:integer" use="required"/>
+    <xs:attribute name="path" type="xs:string" use="required"/>
+    <xs:attribute name="registerProcedure" type="xs:string" use="required"/>
+    <xs:attribute name="protocol" type="xs:string" use="required"/>
+    <xs:sequence>
+        <xs:element name="cloudName" type="xs:string"/>
+    </xs:sequence>
+</xs:complexType>
+
+<!-- mi definisco un tipo skipDays -->
+<xs:complexType name="skipDaysType">
+    <xs:sequence>
+        <xs:element name="day" type="xs:date" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+</xs:complexType>
+
+<!-- mi definisco un tipo skipHours -->
+<xs:complexType name="skipHoursType">
+    <xs:sequence>
+        <xs:element name="hour" type="xs:time" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+</xs:complexType>
+
+<!-- mi definisco un tipo channel che utilizza i tipi precedentemente definiti -->
+<xs:complexType name="channelType">
+    <xs:sequence>
+        <xs:element name="title" type="xs:string"/>
+        <xs:element name="description" type="xs:string"/>
+        <xs:element name="link" type="xs:string"/>
+        <xs:element name="language" type="xs:string" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="item" type="xs:itemType" minOccurs="1" maxOccurs="unbounded"/>
+        <xs:element name="rating" type="xs:decimal" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="image" type="imageType" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="textInput" type="textInputType" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="copyright" type="xs:string" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="pubDate" type="xs:date" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="lastBuildDate" type="xs:date" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="docs" type="xs:string" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="managingEditor" type="xs:string" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="webMaster" type="xs:string" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="skipHours" type="xs:skipHoursType" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="skipDays" type="xs:skipDaysType" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="cloud" type="xs:cloudType" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+</xs:complexType>
+
+<!-- mi definisco un tipo feed RSS utilizzando il tipo channel -->
+<xs:complexType name="rssType">
+    <xs:sequence>
+        <xs:element name="canale" type="channelType" minOccurs="1" maxOccurs="1"/>
+    </xs:sequence>
+</xs:complexType>
+
+<!-- dichiaro un l'elemento RSS feed -->
+<xs:element name="rss" type="rssType"/>

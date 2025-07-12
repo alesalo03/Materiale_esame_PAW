@@ -1,0 +1,58 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+<!-- mi definisco un tipo nome -->
+<xs:complexType name="nomeType">
+    <xs:attribute name="nomeProprio" type="xs:string" use="required"/>
+    <xs:sequence>
+        <xs:element name="secondoNome" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="cognome" type="xs:string" use="required"/>
+</xs:complexType>
+
+<!-- mi definisco un tipo indirizzo -->
+<xs:complexType name="indirizzoType">
+    <xs:sequence>
+        <xs:element name="via" type="xs:string" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="indirizzoPostale" type="xs:integer" use="required"/>
+    <xs:attribute name="provincia" type="xs:string" use="optional"/>
+    <xs:attribute name="stato" type="xs:string" use="required"/>
+</xs:complexType>
+
+<!-- mi definisco un tipo telefono -->
+<xs:simpleType name="telefonoType">
+    <xs:restriction base="xs:decimal">
+        <xs:totalDigits value="10"/>
+        <xs:fractionDigits value="0"/>
+    </xs:restriction>
+</xs:simpleType>
+
+<!-- mi definisco un tipo mail -->
+<xs:simpleType name="mailType">
+    <xs:restriction base="xs:string">
+        <xs:pattern value="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"/>
+    </xs:restriction>
+</xs:simpleType>
+
+
+<!-- mi definisco un tipo informazione che utilizza i tipi nome e indirizzo -->
+<xs:complexType name="informazioneType">
+    <xs:sequence>
+        <xs:element name="nome" type="xs:nomeType"/>
+        <xs:element name="indirizzo" type="indirizzoType" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element name="telefono" type="telefonoType" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element name="mail" type="mailType" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element name="note" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="nazionalità" type="xs:string" use="optional"/>
+</xs:complexType>
+
+<!-- mi definisco un tipo address list utilizzando il tipo informazione -->
+<xs:complexType name="addressListType">
+    <xs:sequence>
+        <xs:element name="informazione" type="informazioneType" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+</xs:complexType>
+
+<!-- dichiaro un lemeento lettera -->
+<xs:element name="addressList" type="addressListType"/>

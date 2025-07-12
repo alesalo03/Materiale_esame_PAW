@@ -1,0 +1,25 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+<!-- mi definisco un tipo corpo -->
+<xs:complexType name="corpoType">
+    <xs:sequence>
+        <xs:element name="paragrafo" type="xs:string" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+</xs:complexType>
+
+<!-- mi definisco un tipo lettera utilizzando il tipo corpo -->
+<xs:complexType name="letteraType">
+    <xs:sequence>
+        <xs:element name="mittente" type="xs:string"/>
+        <xs:element name="data" type="xs:date"/>
+        <xs:element name="destinatario" type="xs:string"/>
+        <xs:element name="oggetto" type="xs:string"/>
+        <xs:element name="salutoCortese" type="xs:string"/>
+        <xs:element name="corpo" type="corpoType"/>
+        <xs:element name="chiusura" type="xs:string"/>
+        <xs:element name="firma" type="xs:string"/>
+    </xs:sequence>
+</xs:complexType>
+
+<!-- dichiaro un lemeento lettera -->
+<xs:element name="lettera" type="letteraType"/>

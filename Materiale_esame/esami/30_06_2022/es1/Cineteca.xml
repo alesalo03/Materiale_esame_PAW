@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cineteca xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="Cineteca.xsd">
+     <archivioAudioVisivo>
+          <audioVisivo>
+               <regista>
+                    <nomeRegista>Anzelo</nomeRegista>
+                    <cognomeRegista>Jin</cognomeRegista>
+               </regista>
+               <titolo>Cars</titolo>
+               <nazione>IT</nazione>
+               <lingua>ITA</lingua>
+               <tipoColore>BN</tipoColore>
+               <durata>110</durata>
+               <tipologia>Cartone Animato</tipologia>
+               <formato>VHS</formato>
+               <annoProduzione>2001</annoProduzione>
+               <disponibile>true</disponibile>
+               <collocazione>12.23.34.456.BIM</collocazione>
+          </audioVisivo>
+     </archivioAudioVisivo>
+     <archivioPellicola>
+          <pellicola>
+               <regia>
+                    <nomeRegista>Lorenzo</nomeRegista>
+                    <cognomeRegista>Spada</cognomeRegista>
+               </regia>
+               <titolo>Shrek</titolo>
+               <pellicolaDim>16mm</pellicolaDim>
+               <prestito>false</prestito>
+          </pellicola>
+          <pellicola>
+               <regia>
+                    <nomeRegista>Matteo</nomeRegista>
+                    <cognomeRegista>Fontolan</cognomeRegista>
+               </regia>
+               <titolo>Shrek 2</titolo>
+               <pellicolaDim>16mm</pellicolaDim>
+               <prestito>true</prestito>
+          </pellicola>
+     </archivioPellicola>
+</cineteca>

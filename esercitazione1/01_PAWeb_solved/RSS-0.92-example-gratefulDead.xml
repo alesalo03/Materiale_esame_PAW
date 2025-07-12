@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="0.92"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:noNamespaceSchemaLocation="../01_PAWeb_solved/RSS-0.92.xsd">
+  <channel>
+    <title>Grateful Dead Setlists</title>
+    <link>http://www.deadlists.com/</link>
+    <description>Setlists of Grateful Dead concerts</description>
+    <lastBuildDate>2025-07-11</lastBuildDate>
+    <docs>http://www.deadlists.com/docs/rss</docs>
+    <managingEditor>editor@deadlists.com</managingEditor>
+    <webMaster>webmaster@deadlists.com</webMaster>
+    <cloud domain="cloud.deadlists.com" port="80" path="/cloud" registerProcedure="register" protocol="xml-rpc"/>
+    <item>
+      <title>Grateful Dead - 1977-05-08 - Barton Hall</title>
+      <link>http://www.deadlists.com/setlists/1977-05-08.html</link>
+      <description>One of the most famous Grateful Dead concerts.</description>
+      <source url="http://www.deadlists.com/source/1977-05-08.html">Deadlists Source</source>
+      <enclosure url="http://www.deadlists.com/audio/1977-05-08.mp3" length="12345678" type="audio/mpeg"/>
+      <category domain="concerts"/>
+    </item>
+    <language>en-us</language>
+    <rating>PG</rating>
+    <image>
+      <title>Grateful Dead Logo</title>
+      <url>http://www.deadlists.com/images/gdlogo.png</url>
+      <link>http://www.deadlists.com/</link>
+      <width>100</width>
+      <height>100</height>
+      <description>Official Grateful Dead logo</description>
+    </image>
+    <textInput>
+      <title>Search</title>
+      <description>Search setlists</description>
+      <name>query</name>
+      <link>1</link>
+    </textInput>
+    <copyright>Copyright 2025 Deadlists.com</copyright>
+    <pubDate>2025-07-11</pubDate>
+    <skipHours>
+      <hour>0</hour>
+      <hour>12</hour>
+    </skipHours>
+    <skipDays>
+      <day>Saturday</day>
+      <day>Sunday</day>
+    </skipDays>
+  </channel>
+</rss>

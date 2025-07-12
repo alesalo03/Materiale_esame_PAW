@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Address_list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:noNamespaceSchemaLocation="../01_PAWeb_solved/AddressList.xsd">
+    <Information>
+        <Full_name>
+            <First_name>Mario</First_name>
+            <Middle_name>Luigi</Middle_name>
+            <Last_name>Rossi</Last_name>
+        </Full_name>
+        <Address>
+            <Street>Via Roma</Street>
+            <Postal_code>20100</Postal_code>
+            <Area>MI</Area>
+            <Country>Italia</Country>
+        </Address>
+        <Telephone>123456789</Telephone>
+        <Email>mario.rossi@email.com</Email>
+        <Nationality>Italiana</Nationality>
+        <Other_information>Amico di infanzia</Other_information>
+    </Information>
+</Address_list>
