@@ -19,3 +19,10 @@ Per utilizzare IdBroker devo prima aver creato una sequenza su dbeaver, posso fa
 Per eliminare la sequenza:
 DROP SEQUENCE sequenza_id;
 --------------------------------------------------------------------------------------------------
+Nei file .hbm.xml nel link in alto va messo:
+
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd"
+
+Invece nel file .cfg.xml:
+
+"https://hibernate.org/dtd/hibernate-configuration-3.0.dtd"

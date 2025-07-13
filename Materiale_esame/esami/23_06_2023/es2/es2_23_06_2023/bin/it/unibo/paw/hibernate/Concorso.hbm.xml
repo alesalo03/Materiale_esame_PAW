@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="it.unibo.paw.hibernate.Concorso" table="concorsi">
+		<id name="conId" column="conId" />
+		<property name="codiceConcorso" column="codiceConcorso" not-null="true" unique="true" />
+		<property name="classeConcorso" column="classeConcorso" not-null="true"/>
+		<property name="descrizione" column="descrizione" not-null="true"/>
+
+		<set name="candidati" table="concorsi_candidati" inverse="false" fetch="select" cascade="all">
+			<key column="conId" />
+			<many-to-many column="canId" class="it.unibo.paw.hibernate.Candidato" />
+		</set>
+
+		<set name="commissari" table="commissari" inverse="true" fetch="select">
+			<key>
+				<column name="comId" not-null="false" />
+			</key>
+			<one-to-many class="it.unibo.paw.hibernate.Commissario" />
+		</set>
+
+	</class>
+</hibernate-mapping>
