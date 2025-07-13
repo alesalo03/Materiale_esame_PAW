@@ -1,0 +1,21 @@
+PATTERN DAO:
+
+DaoFactory --> Db2DAOFactory --> Db2StudentDAO 
+
+DTO --> DAO --> Db2DAO
+
+DTO == javabean
+--------------------------------------------------------------------------------------------------
+Per utilizzare IdBroker devo prima aver creato una sequenza su dbeaver, posso farlo con lo script:
+
+	CREATE SEQUENCE sequenza_id
+	AS INTEGER
+	START WITH 1
+	INCREMENT BY 1
+	MINVALUE 0
+	MAXVALUE 9999999
+	NO CYCLE; 
+
+Per eliminare la sequenza:
+DROP SEQUENCE sequenza_id;
+--------------------------------------------------------------------------------------------------
